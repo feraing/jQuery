@@ -1,0 +1,97 @@
+环境：
+CentOS Linux release 7.3.1611 (Core)
+
+
+1 安装
+yum install git -y
+
+初始化git仓库
+
+mkdir learn_git
+cd learn_git
+git init
+
+添加文件到git
+git add hello.txt
+git commit -m 'add hello.txt'
+
+查看结果
+git status
+
+查看内容不同
+git diff hello.txt
+
+查看历史记录
+git log
+优化参数：--pretty=oneline
+
+版本
+当前版本：HEAD
+上一个版本：HEAD^
+上上个版本：HEAD^^
+网上100个版本：HEAD~100
+
+回退到上一个版本
+git reset --hard HEAD^
+
+回到未来某个版本
+找到append GPL的commit id：xx11xx...
+git reset --hard xx11xx
+
+记录每一次的命令
+git reflog
+
+
+丢弃工作区的修改
+git checkout -- hello.txt
+
+暂存区的修改回退到工作区
+git reset HEAD hello.txt
+
+删除文件
+rm hello.txt
+git rm hello.txt
+git commit -m 'remove hello.txt'
+
+误删除
+rm hello.txt
+git checkout -- hello.txt
+
+-------------------------------------------
+远程仓库
+
+关联一个远程仓库
+git remote add origin git@github.com:feraing/jQuery.git
+
+本地内容推动到仓库
+git push -u origin master
+
+本地提交，推到仓库
+git push origin master
+
+克隆一个本地库
+git clone git@github.com:feraing/jQuery.git
+or
+git clone https://github.com/feraing/jQuery.git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
