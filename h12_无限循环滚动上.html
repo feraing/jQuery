@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h12_无限循环滚动上</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            height: 161px;
+            /*图片尺寸为300*161，只能放两张图片*/
+            border: 1px solid #000000;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            width: 1800px;
+            height: 161px;
+        }
+        ul>li{
+            float: left;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            //1 定义一个初始偏移量
+            var offset = 0;
+            var timer = setInterval(function () {
+                //2 设置一个时间触发器，实现图片不停滚动
+                offset += -20;
+                //3 每隔100ms，图片的偏移量-20
+                if(offset <= -1200) {
+                    //4 这里使用了a-b-c-d-a-b的模式
+                    // 这样就不会在跳转的时候会闪现
+                    // 原因是：在跳的时候图片是一样的，眼睛看不出闪烁
+                    // 而使用a-b-c-d，条件为出去两张（600），在跳转会闪烁
+                    offset = 0;
+                };
+                $("ul").css("marginLeft", offset);
+            }, 100)
+        })
+    </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="static/images/h12-a.png" alt=""></li>
+        <li><img src="static/images/h12-b.png" alt=""></li>
+        <li><img src="static/images/h12-c.png" alt=""></li>
+        <li><img src="static/images/h12-d.png" alt=""></li>
+        <li><img src="static/images/h12-a.png" alt=""></li>
+        <li><img src="static/images/h12-b.png" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

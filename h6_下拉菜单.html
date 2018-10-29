@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h6_下拉菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            list-style: none;
+            width: 300px;
+            height: 50px;
+            background: darkcyan;
+            margin: 100px auto;
+        }
+        .nav>li{
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            float: left;
+            text-align: center;
+        }
+        .sub{
+            list-style: none;
+            /*background: orange;*/
+            display: none;
+        }
+        .sub>li{
+            background: orange;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        //在jQuery中如果需要执行动画，在执行动画之前
+        // 先执行stop方法，再执行动画
+        //解决的问题：不会导致快速动画时的延迟反应
+        $(function () {
+            //1 监听鼠标移入事件
+            $(".nav>li").mouseenter(function () {
+                //1.2 先停止之前的动画
+                $(this).children(".sub").stop();
+                //1.2 当前节点的孩子节点展开
+                $(this).children(".sub").slideDown();
+            })
+            //2 监听鼠标移出事件
+            $(".nav>li").mouseleave(function () {
+                //2.1 先停止之间的动画
+                $(this).children(".sub").stop();
+                // $(this).stop();
+                //2.2 当前节点的孩子节点收起
+                $(this).children(".sub").slideUp();
+            })
+        })
+    </script>
+</head>
+<body>
+<ul class="nav">
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

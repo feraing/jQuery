@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h16_复制节点</title>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        /*
+        * clone：复制，分为浅复制和深复制
+        * 浅复制：只复制元素，但不复制元素的事件
+        * 深复制：既复制元素，又复制元素的事件
+        * */
+        $(function () {
+            $("button").eq(0).click(function () {
+                // 1 复制一个节点
+                // var $li = $("li").eq(0).clone(false);
+                // 专业写法
+                var $li = $("li:first").clone(false);
+                // 2 把复制的节点添加到指定元素中：append
+                $("ul").append($li);
+            });
+            $("button").eq(1).click(function () {
+                var $li = $("li:first").clone(true);
+                $("ul").append($li)
+            });
+
+            // 浅复制与深复制的区别
+            $("li").click(function () {
+                alert("我是li");
+            })
+        })
+    </script>
+</head>
+<body>
+<button>浅复制</button>
+<button>深复制</button>
+<ul>
+    <li>我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+</ul>
+</body>
+</html>

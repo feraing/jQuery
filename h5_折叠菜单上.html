@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h5_折叠菜单上</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            list-style: none;
+            width: 300px;
+            margin: 100px auto;/*让ul在页面中部*/
+            /*border: 1px solid #000000;*/
+        }
+        .nav>li{
+            border: 1px solid #000000;
+            border-bottom: none;
+            /*先取消所有li的下边框，再结合flag1，达到所有边框都1px*/
+            line-height: 35px;/*文字在行中，li的高度为35px*/
+            text-indent: 2em;/*距离开始的位置有2em距离，em：当前字体的两倍*/
+            position: relative;
+            /*小箭头在span元素中，'子随父相'，设置位置为相对位置，再结合flag2*/
+        }
+        .nav>li:last-child{
+            /*li的最后一个元素*/
+            border-bottom: 1px solid #000000;/*flag1*/
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            /*为底边框设置圆角*/
+        }
+        .nav>li:first-child{
+            /*li的第一个元素*/
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            /*为顶部边框设置圆角*/
+        }
+        .nav>li>span{
+            background: url("static/images/xiaojiantou.png") no-repeat center center;
+            /*no-repeat：取消平铺；center：水平、垂直居中*/
+            width: 32px;
+            height: 32px;
+            display: inline-block;/*???*/
+            position: absolute;/*flag2*/
+            right: 20px;/*span距离右侧20px*/
+            top: 2px;/*span距离顶部2px（修正）*/
+        }
+        /*以上是针对一级菜单做的css设置，如果因为是二级菜单的设置，会标注-g2*/
+        .sub{
+            display: none;
+        }
+        .sub>li{
+            list-style: none;
+            background: darkcyan;
+            border-bottom: 1px solid white;
+        }
+        .sub>li:hover{
+            background: chocolate;
+        }
+        .nav>.current>span{
+            transform: rotate(90deg);/*span旋转90°*/
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            //1.1 监听当前节点被点击事件
+            $(".nav>li").click(function () {
+                //console.log($(this).children("sub"));
+                //1.2 当前节点的二级菜单显示
+                $(this).children(".sub").slideDown(1000);
+                //1.3 非当前节点的二级菜单赢藏
+                $(this).siblings().children(".sub").slideUp();
+                //1.4 当前一级菜单的箭头旋转90°
+                $(this).addClass("current");
+                //1.5 非当前节点一级菜单的箭头还原
+                $(this).siblings().removeClass("current");
+            })
+        })
+    </script>
+</head>
+<body>
+<ul class="nav">
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+    <li>一级菜单<span></span>
+        <ul class="sub">
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+            <li>二级菜单</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

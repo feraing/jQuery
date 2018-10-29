@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>展开和收起动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100px;
+            height: 200px;
+            background-color: orange;
+            display: none;/*默认是隐藏*/
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        // 1 展开的方法：$("div").slideDown;
+        // 2 收起的方法：$("div").slideUp;
+        // 3 切换的方法：$("div").sledeToggle
+        // 4 方法说明：第一个参数为展开（收起，切换）的时间，单位为ms；
+        //          第二参数为callback函数
+        $(function () {
+            $("button").eq(0).click(function () {
+                $("div").slideDown(1000, function () {
+                    alert("展开完毕");
+                })
+            });
+            $("button").eq(1).click(function () {
+                $("div").slideUp(1000, function () {
+                    alert("收起完毕");
+                })
+            })
+            $("button").eq(2).click(function () {
+                $("div").slideToggle(1000, function () {
+                    alert("切换完成");
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<button>展开</button>
+<button>收起</button>
+<button>切换</button>
+<div></div>
+</body>
+</html>

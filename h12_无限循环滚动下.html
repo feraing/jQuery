@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h12_无限循环滚动下</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 600px;
+            height: 161px;
+            border: 1px solid #000000;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+        ul{
+            list-style: none;
+            width: 1800px;
+            height: 161px;
+            background: #000000;/*添加蒙板使用*/
+        }
+        ul>li{
+            float: left;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        // fadeTo(a,b,c):
+        // a:可选，速度
+        // b：必须，透明度，0-1之间
+        // c：可选，回调函数
+        $(function () {
+            var offset = 0;
+            var timer;
+            function playAuto() {
+                timer = setInterval(function () {
+                    offset += -20;
+                    if(offset <= -1200){
+                        offset = 0;
+                    }
+                    $("ul").css("marginLeft", offset);
+                }, 100);
+            }
+            playAuto();
+
+            // 监听li的移入移出事件
+            $("li").hover(function () {
+                // 停止滚动
+                clearInterval(timer);
+                // 给非当前节点添加蒙板
+                $(this).siblings().fadeTo(100, 0.5);
+                // 给当前节点去掉蒙板
+                $(this).fadeTo(100, 1);
+            }, function () {
+                playAuto();
+                // 去除所有的蒙板
+                $("li").fadeTo(100, 1);
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    <ul>
+        <li><img src="static/images/h12-a.png" alt=""></li>
+        <li><img src="static/images/h12-b.png" alt=""></li>
+        <li><img src="static/images/h12-c.png" alt=""></li>
+        <li><img src="static/images/h12-d.png" alt=""></li>
+        <li><img src="static/images/h12-a.png" alt=""></li>
+        <li><img src="static/images/h12-b.png" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

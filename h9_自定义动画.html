@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h9_自定义动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            background: orange;
+        }
+        .two{
+            background: darkcyan;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        /*
+        animate：自定义动画
+        第1个参数：接受一个对象，可以在对象中修改属性
+        第2个参数：指定动画时长
+        第3个参数：指定动画节奏，默认swing（先快在慢在快），linear（匀速）
+        第4个参数：动画执行完毕之后回调函数
+        */
+        $(function () {
+            $("button").eq(0).click(function () {
+                /*
+                $(".one").animate({
+                    width: 500
+                }, 1000, function () {
+                    alert("自定义动画操作属性完毕")
+                })
+                */
+                $(".one").animate({
+                    marginLeft: 500
+                }, 1000, "linear", function () {
+                    // alert("操作属性完毕")
+                });
+                $(".two").animate({
+                    marginLeft: 500
+                }, 1000, function () {
+                    //
+                })
+            });
+            $("button").eq(1).click(function () {
+                $(".one").animate({
+                    width: "+=200px"
+                }, 1000, function () {
+                    //
+                })
+            });
+            $("button").eq(2).click(function () {
+                $(".one").animate({
+                    //width: "hide"
+                    width: "toggle"
+                }, 1000, function () {
+                    alert("自定义动画关键字操作完毕")
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+<button>操作属性</button>
+<button>累加属性</button>
+<button>关键字</button>
+<div class="one"></div>
+<div class="two"></div>
+</body>
+</html>

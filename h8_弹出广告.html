@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h8_弹出广告</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .ad{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            display: none;
+        }
+        .ad>span{
+            /*span的作用是为了点击图片的X，可以监听事件*/
+            display: inline-block;
+            width: 30px;
+            height: 20px;
+            /*background: orange;*/
+            position: absolute;
+            top: 0;
+            right: 5px;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            //1 监听span的点击事件，关闭广告
+            $("span").click(function () {
+                $(".ad").remove();
+            });
+            //2 执行动画广告
+            /*
+            $(".ad").slideDown(1000, function () {
+                $(".ad").fadeOut(1000, function () {
+                    $(".ad").fadeIn(1000);
+                })
+            })
+            */
+            // 根据jQuery的“管道”原理，可以连接操作
+            $(".ad").stop().slideDown(1000).fadeOut(1000).fadeIn(1000);
+        })
+    </script>
+</head>
+<body>
+<div class="ad">
+    <img src="static/images/tanchuguanggao.png" alt="">
+    <span></span>
+</div>
+</body>
+</html>

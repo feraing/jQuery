@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>对联广告</title>
+    <style>
+        /*
+        1. 两张图片组左右定位，通过position，left，right，top
+        */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .left {
+            float: left;
+            position: fixed;
+            left: 0;/*使用fixed之后，如果不使用left则两张图片重叠*/
+            top: 280px;
+        }
+        .right {
+            float: right;
+            position: fixed;
+            right: 0;
+            top: 280px;
+        }
+        img {
+            display: none;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        // 1. 网页的监听：$(window).scroll()
+        // 2. 滚动条的偏移位：$("html, body").scrollTop()
+        $(function () {
+            //1 网页监听滚动条
+            $(window).scroll(function () {
+                //2 获取滚动条的偏移位
+                console.log($("html, body").scrollTop());
+                var offset = $("html, body").scrollTop();
+                if(offset > 200){
+                    $("img").show(1000)
+                }else{
+                    $("img").hide(1000)
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<img src="static/images/duilian_left.png" class="left">
+<img src="static/images/duilian_right.png" class="right">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h10_stop和delay</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .one{
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        .two{
+            width: 500px;
+            height: 10px;
+            background: darkcyan;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        /*
+        1 jQuery中{}可以设置多个属性，可以同时动画开始
+        2 delay方法的作用：延迟动作
+        3 stop方法可以0,1,2个参数，共四种状态
+        */
+        $(function () {
+            $("button").eq(0).click(function () {
+                /*
+                width和height同时动画
+                */
+                /*
+                $(".one").animate({
+                    width: "500px",
+                    height: "500px"
+                }, 1000, function () {
+                    //
+                })
+                */
+                // 方法一：先width动画再height
+                /*
+                $(".one").animate({
+                    width: "500px"
+                }, 1000, function () {
+                    $(".one").animate({
+                        height: "500px"
+                    }, 1000, function () {
+                        //
+                    })
+                })
+                */
+                // 方法二：先width动画再height
+                // $(".one").animate({
+                //     width: "500px"
+                // }, 1000).animate({
+                //     height: "500px"
+                // }, 1000)
+                // 先width动画延迟2s再height动画
+                // $(".one").animate({
+                //     width: "500px"
+                // }, 1000).delay(2000).animate({
+                //     height: "500px"
+                // }, 1000)
+                // 先width动画再height动画，再width动画再height动画
+                $(".one").animate({
+                    width: "500px"
+                }, 1000).animate({
+                    height: "500px"
+                }, 1000).animate({
+                    width: "100px"
+                }, 1000).animate({
+                    height: "100px"
+                }, 1000)
+            });
+            $("button").eq(1).click(function () {
+                // 立即停止当前动画，继续执行后续动画
+                //$("div").stop();
+                //$("div").stop(false);
+                // $("div").stop(false, false);
+
+                // 立即停止当前和后续所有的动画
+                //$("div").stop(true);
+                // $("div").stop(true, false);
+
+                // 立即完成当前的，继续执行后续动画
+                // $("div").stop(false, true);
+
+                // 立即完成当前的，停止后续所有的
+                $("div").stop(true, true);
+            })
+        })
+    </script>
+</head>
+<body>
+<button>开始动画</button>
+<button>结束动画</button>
+<div class="one"></div>
+<div class="two"></div>
+</body>
+</html>

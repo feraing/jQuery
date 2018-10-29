@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            background: darkcyan;
+            display: none;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        /*
+        fadeIn:淡入，fadeOut：淡出，fadeToggle：切换
+        fadeTo(1, 2, 3, 4):
+        1 淡入淡出的速度，必须
+        2 透明度，必须
+        3 速度，可选
+        4 回调函数，可选
+        一般使用1,3,4
+        */
+        $(function () {
+            $("button").eq(0).click(function () {
+                $("div").fadeIn(1000, function () {
+                    alert("淡出完毕")
+                })
+            });
+            $("button").eq(1).click(function () {
+                $("div").fadeOut(1000, function () {
+                    alert("淡出完毕")
+                })
+            });
+            $("button").eq(2).click(function () {
+                $("div").fadeToggle(1000, function () {
+                    alert("切换完毕")
+                })
+            });
+            $("button").eq(3).click(function () {
+                $("div").fadeTo(1000, 0.5, 'linear', function () {
+                    alert("淡出完毕")
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+<button>淡入</button>
+<button>淡出</button>
+<button>切换</button>
+<button>淡入到</button>
+<div></div>
+</body>
+</html>

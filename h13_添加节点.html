@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>h13_添加节点</title>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        /*
+        内部插入
+        append（需记住）
+        appendTo(未验证成功！！！)
+        会将元素添加到指定元素内部的最后
+
+        prepend（需记住）
+        preendTo（未验证成功！！！）
+        会将元素添加到指定元素内部的最前面
+
+        外部插入
+        after（需记住）
+        insertAfter(未验证成功)
+        会将元素添加到指定元素外部的后面
+        before（需记住）
+        insertBefore（未验证成功）
+        会将元素添加到指定元素外部的后面
+
+        */
+        $(function () {
+            $("button").click(function () {
+                // 1 创建一个节点：创建元素代码片段
+                var $li = "<li>我是添加的节点</li>";
+                // 添加节点
+                // $("ul").append($li);
+                // $("ul").prepend($li);
+                // $li.appendTo("ul");
+                $("<li>我是添加的节点</li>").prependTo("p");
+                // $("ul").after($li);
+                // $('ul').before($li);
+                // $li.insertAfter("ul");
+            })
+        })
+    </script>
+</head>
+<body>
+<button>添加节点</button>
+<ul>
+    <li>我是第1个节点</li>
+    <li>我是第2个节点</li>
+    <li>我是第3个节点</li>
+</ul>
+<div>我是div</div>
+</body>
+</html>

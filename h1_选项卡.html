@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 440px;
+            height: 298px;
+            border: 1px solid #000;
+            margin: 50px auto;
+        }
+
+        .nav > li {
+            list-style: none;
+            width: 110px;
+            height: 50px;
+            background-color: orange;
+            text-align: center;
+            line-height: 50px;
+            float: left;
+        }
+
+        .nav > .current {
+            background-color: #cccccc;
+        }
+        .content > li {
+            list-style: none;
+            display: none;
+        }
+        .content > .show {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            /* 方法一：有bug，最后移出会显示空白图片
+            //1 监听选项卡的移入事件
+            $(".nav > li").mouseenter(function () {
+                //1.1 修改被移入选项卡的颜色
+                $(this).addClass("current");
+                //1.2 获取当前选项卡的索引
+                var index = $(this).index();
+                console.log(index);
+                //1.3 根据索引找到对应的图片
+                var li = $(".content>li").eq(index);
+                console.log(li);
+                //1.4 显示找到的图片
+                li.addClass("show");
+            });
+            //2 监听选项卡的移出事件
+            $(".nav > li").mouseleave(function () {
+                //2.1 修改被移出选项卡的颜色
+                $(this).removeClass("current");
+                //2.2 获取当前选项卡的索引
+                var index = $(this).index();
+                //2.3 根据索引找到对应的图片
+                var li = $(".content>li").eq(index);
+                //2.4 隐藏图片
+                li.removeClass("show");
+            })
+            */
+            //1 监听选项卡的移入事件
+            $(".nav>li").mouseenter(function () {
+                //1.1 修改当前选项卡的颜色
+                $(this).addClass("current");
+                //1.2 修改其他兄弟节点的颜色
+                //console.log($(this).siblings());
+                $(this).siblings().removeClass("current");
+                //1.3 找到当前选项卡的索引
+                var index = $(this).index();
+                //1.4 根据索引找到对应的图片
+                var li = $(".content>li").eq(index);
+                //1.5 隐藏其他兄弟节点的图片:此时当前节点是li
+                // 移出非当前节点的图片
+                li.siblings().removeClass("show")
+                //1.6 显示当前节点的图片
+                li.addClass("show");
+
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul class="nav">
+            <li class="current">Html</li>
+            <li>Java</li>
+            <li>Python</li>
+            <li>Go</li>
+        </ul>
+        <ul class="content">
+            <li class="show"><img src="static/images/11.jpg" width="440px"></li>
+            <li><img src="static/images/12.jpg" width="440px"></li>
+            <li><img src="static/images/13.jpg" width="440px"></li>
+            <li><img src="static/images/15.jpg" width="440px"></li>
+        </ul>
+    </div>
+    <div>
+    </div>
+</body>
+</html>

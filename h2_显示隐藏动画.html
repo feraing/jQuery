@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>显示赢藏动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        div {
+            display: none;
+        }
+    </style>
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        //1. 块元素的显示：$("div").show()
+        //2. 块元素的隐藏：$("div").hide()
+        //3. show(speed, callback):
+        // speed默认为0ms，可以为xxxms，slow，fast，normal
+        // callback show执行完之后执行的函数
+        // 除非设置了speed，否则不能设置callback
+        $(function () {
+            $("button").eq(0).click(function () {
+                $("div").show(1000, function () {
+                    alert("显示完成")
+                })
+            })
+            $("button").eq(1).click(function () {
+                $("div").hide(1000, function () {
+                    alert("隐藏完成")
+                })
+            })
+            $("button").eq(2).click(function () {
+                $("div").toggle(1000, function () {
+                    alert("切换完成")
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<button>显示</button>
+<button>赢藏</button>
+<button>切换</button>
+<div class="content"></div>
+</body>
+</html>
