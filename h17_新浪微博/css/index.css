@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background: url("../images/body_pg.png") no-repeat center 0;
+}
+.nav{
+    width: 100%;
+    height: 50px;
+}
+.nav>img{
+    width: 100%;
+    /*高度不用设置，直接根据nav自适应*/
+}
+.content{
+    width: 1000px;
+    /*height: 1000px;*/
+    height: auto;/*不需要具体的高度了，由左图或右图或中间撑起来*/
+    overflow: hidden;/*清除浮动*/
+    background: #cccccc;
+    margin: 100px auto 0 auto;/*图片居中*/
+}
+.content>.left{
+    float: left;/*让图片靠做显示*/
+    width: 150px;/*纯粹让图片看起来好看*/
+}
+.content>.right{
+    float: right;/*让图片靠右显示*/
+    width: 240px;/*纯粹让图片看起来好看*/
+}
+.content>.center{
+    float: left;
+    /*左边有图片，是左浮动，右边也有图片，此时设置浮动为左
+    图片直接紧靠着左图显示，在中间位置
+    */
+    width: 600px;/*此时图片被裁减了，总共1000，左图150，右图240，最大610*/
+    height: 180px;
+    background: url("../images/comment.png") no-repeat 0 0;
+    background-size: 600px 180px;/*压缩图片为600*180，这样才能完全显示图片*/
+}
+.center>.comment{
+    width: 570px;
+    height: 73px;
+    margin-top: 45px;
+    margin-left: 15px;
+    /*完全由图片的位置来调整的*/
+    background: bisque;
+    resize: none;/*textarea默认有拖拽功能，取消拖拽*/
+    border: none;/*默认有边框，取消边框*/
+    outline: none;/*???*/
+}
+.center>.send{
+    width: 82px;
+    height: 30px;
+    margin-top: 4px;
+    margin-left: 506px;
+    border: none;
+    background: #fd8040;
+    color: white;
+}
+.content>.messageList{
+    width: 600px;
+    /*height: 600px;*//*自动填充高度*/
+    background: saddlebrown;
+    float: left;
+    /*左边有图片是左浮动，上面有输入框也是左浮动，
+    设置此值为左浮动后
+    由于右边放不下，后有一个贴靠动作*/
+}
+.messageList>.info{
+    padding: 10px 20px;/*微调*/
+    border: 1px solid #cccccc;/*为了显示每个微博之间的横线分隔线*/
+}
+.info>.infoText{
+    line-height: 25px;/*微调*/
+    margin-bottom: 10px;/*微调*/
+}
+.info>.infoOperation{
+    width: 100%;
+    overflow: hidden;/*两个span一个左浮动，一个右浮动*/
+}
+.infoOperation>.infoTime{
+    float: left;
+    font-size: 13px;
+    color: #cccccc;
+}
+.infoOperation>.infoHandle{
+    float: right;
+    font-size: 13px;
+}
+.infoHandle>a{
+    text-decoration: none;/*取消a标签的样式*/
+    color: #cccccc;/*a标签的字体颜色需要在a里修改*/
+    background: url("../images/icons.png") no-repeat 0 0;
+    padding-left: 25px;/*图片显示完全*/
+    margin-left: 10px;/*拉开距离*/
+}
+.infoHandle>a:nth-child(2){
+    background-position: 0 -17px;
+}
+.infoHandle>a:nth-child(3){
+    background-position: 0 -33px;
+}
+.page{
+    width: 1000px;
+    height: 40px;
+    background: coral;
+    margin: 0 auto;/*居中显示*/
+    text-align: right;/*让a标签右边显示（a标签可以当文字设置）*/
+    padding: 10px;/*字体放大*/
+    box-sizing: border-box;
+}
+.page>a{
+    text-decoration: none;
+    display: inline-block;/*设置宽高需要设置*/
+    width: 20px;
+    height: 20px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    line-height: 20px;
+    color: #2b2b2b;
+}
