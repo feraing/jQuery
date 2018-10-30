@@ -28,7 +28,9 @@ $(function () {
        // 插入微博:把新微博插入到最前面prepend
        $(".messageList").prepend($weibo);
        // 清空textarea
-       $(".comment").val();
+       //$(".comment").val();
+       $(".comment").val('');
+       $(".send").prop("disabled", true);
    });
    // 2-4 由于“微博”是动态创建的，所以对应按钮的监听只能用委托函数
    // 2 监听顶点击
