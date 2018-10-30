@@ -65,11 +65,20 @@ $(function () {
         var $date = new Date();
         // 2018-4-3 15:36:28
         var $arr = [$date.getFullYear()+'-',
-        $date.getMonth()+1+'-',
-        $date.getDate()+' ',
-        $date.getHours()+':',
-        $date.getMinutes()+':',
-        $date.getSeconds()];
+        addZero($date.getMonth()+1)+'-',
+        addZero($date.getDate())+' ',
+        addZero($date.getHours())+':',
+        addZero($date.getMinutes())+':',
+        addZero($date.getSeconds())];
         return $arr.join("", $arr);
     };
+	
+	// 不够10补0
+	function addZero(obj) {
+		if(obj < 10){
+			return '0'+obj;
+		}else{
+			return obj;
+		}
+	};
 });
