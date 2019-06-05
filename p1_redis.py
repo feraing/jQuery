@@ -5,6 +5,10 @@
 import redis
 import time
 
+'''
+redis提供两个类Redis和StrictRedis用于实现Redis的命令，StrictRedis用于实现大部分官方的命令，并使用官方的语法和命令，Redis是StrictRedis的子类，用于向后兼容旧版本的redis-py。
+'''
+
 # 直连：低并发，创建连接 --- 操作 --- 释放连接
 
 r = redis.Redis(host='127.0.0.1', port=6379, password='')
